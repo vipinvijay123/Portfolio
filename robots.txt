@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vipin-vijay.vercel.app/sitemap.xml
+Sitemap: https://portfolio-psi-flame-57.vercel.app/sitemap.xml
