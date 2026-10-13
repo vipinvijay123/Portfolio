@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Vipin Vijay — Software Development &amp; Civic Innovation Engineer</title>
+  <meta name="description" content="Personal portfolio and interactive 300-frame orbital realm of Vipin Vijay — Information Technology Engineer, Software Development Intern at Chennai Metro Rail Limited (CMRL).">
+  <meta name="theme-color" content="#05070a">
+  <meta name="color-scheme" content="dark">
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Vipin Vijay — Software Development &amp; Civic Innovation Engineer">
+  <meta property="og:description" content="Personal portfolio and interactive 300-frame orbital realm of Vipin Vijay — Information Technology Engineer, Software Development Intern at Chennai Metro Rail Limited (CMRL).">
+  <meta property="og:image" content="images/ezgif-frame-001.jpg">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Vipin Vijay — Software Development &amp; Civic Innovation Engineer">
+  <meta name="twitter:description" content="Personal portfolio and interactive 300-frame orbital realm of Vipin Vijay — Information Technology Engineer, Software Development Intern at Chennai Metro Rail Limited (CMRL).">
+  <meta name="twitter:image" content="images/ezgif-frame-001.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2305070a'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23e0231c'/%3E%3Crect x='5' y='7' width='22' height='2' fill='%23dfe7e0'/%3E%3C/svg%3E">
+
+  <!-- Typography: Onest, Noto Sans JP, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@300;400;500&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="is-locked">
+
+  <!-- Interactive Custom Cursor -->
+  <div class="cur-dot" id="cur-dot"></div>
+
+  <!-- Background Canvas for 300 Scrub Frames -->
+  <canvas id="gl"></canvas>
+  <div id="grain"></div>
+  <div id="vignette"></div>
+
+  <!-- =========================================================================
+       MINIMALIST LUXURY PRELOADER
+       ========================================================================= -->
+  <div id="pre" role="dialog" aria-modal="true" aria-label="Initializing Experience">
+    <div class="pre-in">
+      <div class="pre-mark">
+        <svg viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="22" stroke="rgba(223,231,224,0.18)" stroke-width="1.5"/>
+          <circle cx="24" cy="24" r="8" fill="#e0231c"/>
+          <line x1="8" y1="24" x2="40" y2="24" stroke="#dfe7e0" stroke-width="1.5"/>
+          <line x1="24" y1="8" x2="24" y2="40" stroke="#dfe7e0" stroke-width="1.5"/>
+        </svg>
+      </div>
+
+      <div class="pre-jp jp">軌道探索 — 300 ORBITAL FRAMES</div>
+
+      <div class="pre-bar">
+        <i id="pre-bar-fill"></i>
+      </div>
+
+      <div class="pre-meta">
+        <span>VIPIN VIJAY // CHENNAI, IN</span>
+        <b id="pre-pct">0%</b>
+      </div>
+
+      <button type="button" class="pre-enter-btn" id="pre-enter-btn">
+        <span>ENTER REALM 軌道</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       NAVIGATION BAR
+       ========================================================================= -->
+  <header class="nav">
+    <a href="#hero" class="brand" aria-label="Return to top">
+      <svg viewBox="0 0 32 32" fill="none">
+        <circle cx="16" cy="16" r="14" stroke="rgba(223,231,224,0.3)" stroke-width="1.2"/>
+        <circle cx="16" cy="16" r="5" fill="#e0231c"/>
+      </svg>
+      <div class="brand-tx">
+        <b>VIPIN VIJAY</b>
+        <i>IT ENGINEER // CMRL INTERN</i>
+      </div>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#identity" class="nav-link">
+        <span>01 // IDENTITY</span>
+        <span class="alt jp">理念</span>
+      </a>
+      <a href="#projects" class="nav-link">
+        <span>02 // PATHWAYS</span>
+        <span class="alt jp">領域</span>
+      </a>
+      <a href="#experience" class="nav-link">
+        <span>03 // EXPERIENCE</span>
+        <span class="alt jp">実践</span>
+      </a>
+      <a href="#matrix" class="nav-link">
+        <span>04 // ARSENAL</span>
+        <span class="alt jp">技術</span>
+      </a>
+      <a href="#contact" class="nav-link">
+        <span>05 // DISPATCH</span>
+        <span class="alt jp">交信</span>
+      </a>
+
+      <button type="button" class="audio-btn" id="audio-toggle" title="Toggle audio synthesis (Key: M)">
+        <span class="audio-dot"></span>
+        <span class="audio-label">AUDIO OFF</span>
+      </button>
+
+      <button type="button" class="open-resume nav-link" style="border:1px solid var(--line);padding:0 12px;border-radius:20px;height:24px;line-height:24px;">
+        <span>RESUME DOSSIER</span>
+        <span class="alt jp">履歴書</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Right Progress Rail -->
+  <aside class="rail" aria-label="Quick Navigation">
+    <button type="button" class="on" title="00 // Launch"><i/></button>
+    <button type="button" title="01 // Identity"><i/></button>
+    <button type="button" title="02 // Pathways"><i/></button>
+    <button type="button" title="03 // Experience"><i/></button>
+    <button type="button" title="04 // Matrix"><i/></button>
+    <button type="button" title="05 // Dispatch"><i/></button>
+  </aside>
+
+  <!-- =========================================================================
+       PAGE CONTENT CONTAINER
+       ========================================================================= -->
+  <div class="page">
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+      <div class="hero-top">
+        <div class="eyebrow">
+          <span class="dot"></span>
+          <span>ORBITAL TRAJECTORY 軌道 // CHENNAI, INDIA</span>
+        </div>
+
+        <h1 class="display h-hero">
+          <span class="mask-line"><span>VIPIN VIJAY</span></span>
+        </h1>
+
+        <p class="body-lg hero-sub">
+          Information Technology undergraduate at SRM Easwari Engineering College. Software Development Intern at Chennai Metro Rail Limited (CMRL). Crafting high-resilience systems, multimodal AI, and civic infrastructure.
+        </p>
+      </div>
+
+      <!-- Floating Live Inspection Peek -->
+      <a href="#projects" class="peek" title="Inspect current mission frame">
+        <div class="peek-fr">
+          <img src="images/ezgif-frame-001.jpg" alt="Active mission frame" class="peek-thumb" id="peek-thumb">
+        </div>
+        <div class="peek-cap">
+          <b class="jp">軌道探査</b>
+          <i>300 SEQUENTIAL FRAMES</i>
+        </div>
+      </a>
+
+      <!-- Vertical Japanese Title Strip -->
+      <div class="hero-side">
+        <div class="v">軌道・都市通信基盤・深層学習</div>
+      </div>
+
+      <div class="hero-spacer"></div>
+
+      <!-- Hero Footer Chapters Index -->
+      <div class="hero-foot">
+        <div class="hero-cue">
+          <span>SCROLL TO DESCEND</span>
+          <div class="track"><i/></div>
+        </div>
+
+        <div class="chapters">
+          <div class="chip on" data-chapter="0">
+            <span class="num">01</span>
+            <div class="tx">
+              <b>ORBITAL ENTRY</b>
+              <p>Global perspective &amp; architectural foundations.</p>
+            </div>
+          </div>
+
+          <div class="chip" data-chapter="1">
+            <span class="num">02</span>
+            <div class="tx">
+              <b>TRANSIT NETWORKS</b>
+              <p>CMRL AI chatbot &amp; high-velocity mobility.</p>
+            </div>
+          </div>
+
+          <div class="chip" data-chapter="2">
+            <span class="num">03</span>
+            <div class="tx">
+              <b>CMRL WORKBENCH</b>
+              <p>Civic waste platforms &amp; engineering rigor.</p>
+            </div>
+          </div>
+
+          <div class="chip" data-chapter="3">
+            <span class="num">04</span>
+            <div class="tx">
+              <b>PRODUCTION KERNEL</b>
+              <p>Full-stack distributed services &amp; verified code.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 300-FRAME SCROLL TRACK FOR BUTTERY SCRUBBING -->
+    <div id="canvas-scroll-track">
+      <div class="canvas-pin-viewport"></div>
+    </div>
+
+    <!-- CHAPTER I: THE GATE / IDENTITY -->
+    <section class="sec" id="identity">
+      <div class="sec-head">
+        <span class="k">CHAPTER I <b>//</b> 理念</span>
+        <div class="rule"></div>
+        <span class="eyebrow">THE GATE OF INTENT</span>
+      </div>
+
+      <div class="gate-grid">
+        <h2 class="display h-sec">
+          CIVIC SCALE &amp; DISTRIBUTED ARCHITECTURE
+        </h2>
+
+        <div class="gate-copy">
+          <p class="lead">
+            I believe software achieves its highest calling when it directly stabilizes critical public infrastructure—from AI conversational assistance for millions of metro commuters to automated geospatial waste management.
+          </p>
+          <p class="body">
+            Enrolled in B.Tech Information Technology at SRM Easwari Engineering College (2024–2028, CGPA: 7.82), I pair foundational computer science (Java, Python, C, Data Structures &amp; Algorithms) with agile distributed systems (Next.js, TypeScript, Node.js, Spring Boot, MongoDB, and Gemini / Google GenAI).
+          </p>
+
+          <a href="#" class="arrowlink open-resume">
+            <span>EXPLORE FULL RESUME DOSSIER</span>
+            <div class="ar">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="gate-stats">
+        <div>
+          <b>60%</b>
+          <span>CHATBOT INTERACTION ENHANCEMENT (CMRL)</span>
+        </div>
+        <div>
+          <b>40%</b>
+          <span>QUERY RESPONSE LATENCY REDUCTION</span>
+        </div>
+        <div>
+          <b>90%</b>
+          <span>CIVIC ENGAGEMENT GROWTH (1M1B)</span>
+        </div>
+        <div>
+          <b>7.82</b>
+          <span>CUMULATIVE GPA (SRM EASWARI IT)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER II: PATHWAYS / SELECTED PROJECTS -->
+    <section class="sec" id="projects">
+      <div class="sec-head">
+        <span class="k">CHAPTER II <b>//</b> 領域</span>
+        <div class="rule"></div>
+        <span class="eyebrow">SELECTED PRODUCTION PATHWAYS</span>
+      </div>
+
+      <div class="cards">
+        <!-- Project 1: CivicAI -->
+        <article class="card" data-project-key="civicai">
+          <div class="card-fr">
+            <div class="glow"></div>
+            <div class="card-ar">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H7M17 7V17" stroke="#dfe7e0" stroke-width="2"/></svg>
+            </div>
+            <div class="card-lab">
+              <div>
+                <b>CivicAI Platform</b>
+                <div class="eyebrow" style="color:var(--muted);font-size:9px;margin-top:2px;">TAMIL NADU CIVIC VERIFICATION</div>
+              </div>
+              <span class="jp">市民AI</span>
+            </div>
+          </div>
+          <div class="card-meta">
+            <span>NEXT.JS // GEMINI AI // MAPS</span>
+            <span>2026 // PRODUCTION</span>
+          </div>
+        </article>
+
+        <!-- Project 2: Telecom Operations -->
+        <article class="card" data-project-key="telecom">
+          <div class="card-fr">
+            <div class="glow" style="animation-delay:-2s;"></div>
+            <div class="card-ar">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H7M17 7V17" stroke="#dfe7e0" stroke-width="2"/></svg>
+            </div>
+            <div class="card-lab">
+              <div>
+                <b>Telecom Operations</b>
+                <div class="eyebrow" style="color:var(--muted);font-size:9px;margin-top:2px;">TOWER ASSET &amp; OUTAGE DISPATCH</div>
+              </div>
+              <span class="jp">通信網</span>
+            </div>
+          </div>
+          <div class="card-meta">
+            <span>REACT // NODE // MONGODB // JWT</span>
+            <span>FULL-STACK IOT</span>
+          </div>
+        </article>
+
+        <!-- Project 3: Rural Telemedicine (SIH Top 50) -->
+        <article class="card" data-project-key="telemedicine">
+          <div class="card-fr">
+            <div class="glow" style="animation-delay:-4s;"></div>
+            <div class="card-ar">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H7M17 7V17" stroke="#dfe7e0" stroke-width="2"/></svg>
+            </div>
+            <div class="card-lab">
+              <div>
+                <b>Rural Telemedicine</b>
+                <div class="eyebrow" style="color:var(--muted);font-size:9px;margin-top:2px;">NABHA HEALTHCARE ACCESS</div>
+              </div>
+              <span class="jp">遠隔医療</span>
+            </div>
+          </div>
+          <div class="card-meta">
+            <span>SIH HACKATHON TOP 50</span>
+            <span>TEAM LEADER</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CHAPTER III: CURRICULUM / PROFESSIONAL IMMERSION -->
+    <section class="sec" id="experience">
+      <div class="sec-head">
+        <span class="k">CHAPTER III <b>//</b> 実践</span>
+        <div class="rule"></div>
+        <span class="eyebrow">FIELD IMMERSION &amp; CASE STUDIES</span>
+      </div>
+
+      <div class="cur-head">
+        <h2 class="display h-sec">INDUSTRY PRACTICE &amp; CONTRIBUTIONS</h2>
+        <p class="body">
+          Hands-on software development and civic sustainability engagements translating technical architectures into validated community milestones.
+        </p>
+      </div>
+
+      <div class="cur">
+        <!-- Experience 1: CMRL -->
+        <div class="les" data-project-key="cmrl">
+          <span class="k">01</span>
+          <h3>Software Development Intern <em>// 鉄道</em></h3>
+          <p>
+            Chennai Metro Rail Limited (CMRL) — Contributed to AI chatbot engineering for passenger assistance, schedules, and route inquiries, achieving 60% interaction improvement and 40% latency reduction.
+          </p>
+          <span class="t">SEP 2026 – PRESENT</span>
+          <div class="bar"></div>
+        </div>
+
+        <!-- Experience 2: Green Intern -->
+        <div class="les" data-project-key="green">
+          <span class="k">02</span>
+          <h3>Green Intern (Batch 7) <em>// 持続性</em></h3>
+          <p>
+            1M1B / AICTE / Salesforce — Engineered City/Town Waste Mapping and Awareness Platform, driving 90% growth in public participation and 80% accelerated reporting cycles.
+          </p>
+          <span class="t">FEB 2026 – PRESENT</span>
+          <div class="bar"></div>
+        </div>
+
+        <!-- Experience 3: Job Automation -->
+        <div class="les" data-project-key="jobs">
+          <span class="k">03</span>
+          <h3>Job Pipeline Automation <em>// 自動化</em></h3>
+          <p>
+            Python, Gmail API &amp; OAuth 2.0 workflow to automate recruiter outreach, response extraction, and structured application lifecycle tracking.
+          </p>
+          <span class="t">SYSTEMS PIPELINE</span>
+          <div class="bar"></div>
+        </div>
+
+        <!-- Experience 4: E-Commerce Simulator -->
+        <div class="les">
+          <span class="k">04</span>
+          <h3>High-Throughput E-Commerce <em>// コア</em></h3>
+          <p>
+            Unstop Tutedude Hackathon — Java OOP architecture, Collections framework, and persistent File I/O for scalable cart transactions and order retrieval.
+          </p>
+          <span class="t">JUL – NOV 2025</span>
+          <div class="bar"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER IV: TECHNICAL MATRIX ATLAS -->
+    <section class="sec" id="matrix">
+      <div class="sec-head">
+        <span class="k">CHAPTER IV <b>//</b> 技術</span>
+        <div class="rule"></div>
+        <span class="eyebrow">KERNEL CAPABILITIES &amp; ACADEMICS</span>
+      </div>
+
+      <h2 class="display h-sec">THE TECHNICAL ARSENAL</h2>
+
+      <div class="matrix-grid">
+        <div class="matrix-cell">
+          <span class="tag">LANGUAGES &amp; CORE</span>
+          <h4>Foundations</h4>
+          <ul>
+            <li>Java (OOP, Concurrency, Collections)</li>
+            <li>Python (Automation, OAuth, APIs)</li>
+            <li>C &amp; Data Structures / Algorithms</li>
+            <li>TypeScript &amp; JavaScript (ESNext)</li>
+          </ul>
+        </div>
+
+        <div class="matrix-cell">
+          <span class="tag">FULL-STACK &amp; DATA</span>
+          <h4>Distributed Stack</h4>
+          <ul>
+            <li>React.js &amp; Next.js (App Router, SSR)</li>
+            <li>Node.js, Express.js &amp; Spring Boot</li>
+            <li>MongoDB, Mongoose &amp; Vector RAG</li>
+            <li>PostgreSQL &amp; MySQL Relational Stores</li>
+          </ul>
+        </div>
+
+        <div class="matrix-cell">
+          <span class="tag">AI, CLOUD &amp; DISCIPLINES</span>
+          <h4>Modern Tooling</h4>
+          <ul>
+            <li>Gemini / Google GenAI &amp; Maps API</li>
+            <li>Observability, Availability &amp; Testing</li>
+            <li>Git, GitHub &amp; CI/CD Pipelines</li>
+            <li>JWT Security &amp; Role-Based Controls</li>
+          </ul>
+        </div>
+
+        <div class="matrix-cell">
+          <span class="tag">MERIT &amp; LEADERSHIP</span>
+          <h4>Honors</h4>
+          <ul>
+            <li>Head – Industry Institute Interactions (ITSA)</li>
+            <li>Google Student Ambassador Program (Finalist)</li>
+            <li>Tata Imagination Challenge 2026 (Shortlisted)</li>
+            <li>Team Leader – SIH Hackathon Top 50</li>
+          </ul>
+        </div>
+
+        <div class="matrix-cell">
+          <span class="tag">CERTIFIED MASTERY</span>
+          <h4>Accreditations</h4>
+          <ul>
+            <li>Cisco Networking: Apply AI for Customer Reviews</li>
+            <li>MongoDB University: AI Agents &amp; RAG</li>
+            <li>MongoDB: Vector Search Fundamentals</li>
+            <li>Interactive Java Programming Mastery</li>
+          </ul>
+        </div>
+
+        <div class="matrix-cell">
+          <span class="tag">ACADEMIC CREDENTIALS</span>
+          <h4>Education</h4>
+          <ul>
+            <li>SRM Easwari Engineering College</li>
+            <li>B.Tech Information Technology (2024–2028)</li>
+            <li>Cumulative GPA: 7.82 / 10.0</li>
+            <li>Chennai, Tamil Nadu, India</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER V: ETERNITY & DIRECT DISPATCH -->
+    <section class="sec fin" id="contact">
+      <div class="eyebrow">05 // DIRECT TRANSMISSION 交信</div>
+      <h2 class="display">TRANSMIT WITH VIPIN VIJAY</h2>
+      <p class="body-lg">
+        Available for software development engineering internships, distributed systems collaborations, and research initiatives.
+      </p>
+
+      <a href="mailto:vipinvijayeec@gmail.com?subject=Inquiry%20regarding%20Vipin%20Vijay" class="cta">
+        <span>INITIALIZE TRANSMISSION</span>
+        <i></i>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H7M17 7V17" stroke="#dfe7e0" stroke-width="2"/></svg>
+      </a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="foot">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <h4>VIPIN VIJAY // アーキテクチャ</h4>
+          <p>
+            Information Technology undergraduate at SRM Easwari Engineering College and Software Development Intern at Chennai Metro Rail Limited. Driven by high availability, clean abstractions, and public good.
+          </p>
+        </div>
+
+        <div>
+          <h4>CHANNELS</h4>
+          <ul>
+            <li><a href="mailto:vipinvijayeec@gmail.com">vipinvijayeec@gmail.com</a></li>
+            <li><a href="tel:+916382412388">+91 6382412388</a></li>
+            <li><a href="https://linkedin.com/in/vipin-vijay-15630033b" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a></li>
+            <li><a href="https://github.com/vipinvijay123" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>SECTIONS</h4>
+          <ul>
+            <li><a href="#hero">00 // Launch Orbit</a></li>
+            <li><a href="#identity">01 // Architectural Intent</a></li>
+            <li><a href="#projects">02 // Selected Pathways</a></li>
+            <li><a href="#experience">03 // Field Immersion</a></li>
+            <li><a href="#matrix">04 // Technical Arsenal</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>DOCUMENTATION</h4>
+          <ul>
+            <li><button type="button" class="open-resume">View Full Resume</button></li>
+            <li><a href="images/ezgif-frame-001.jpg" target="_blank">Mission Telemetry</a></li>
+            <li><a href="mailto:vipinvijayeec@gmail.com">Request Referral</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="foot-base">
+        <span>© 2026 VIPIN VIJAY. 300 SEQUENTIAL FRAMES. CHENNAI, IN.</span>
+        <span>KEYBOARD SHORTCUTS: [M] MUTE AUDIO • [R] OPEN RESUME DOSSIER</span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- =========================================================================
+       MODAL: FULL RESUME DOSSIER (EMBEDDED & PRINTABLE)
+       ========================================================================= -->
+  <div class="dossier-modal" id="resume-dossier" role="dialog" aria-modal="true" aria-labelledby="resume-title">
+    <div class="modal-scrim"></div>
+    <div class="modal-paper">
+      <button type="button" class="modal-close close-modal" aria-label="Close modal">✕</button>
+
+      <div style="margin-bottom:2rem;border-bottom:1px solid var(--line-soft);padding-bottom:1.5rem;">
+        <h2 id="resume-title" class="display" style="font-size:2rem;margin-bottom:4px;">VIPIN VIJAY</h2>
+        <div style="font-size:12px;color:var(--vermilion);letter-spacing:.2em;text-transform:uppercase;">Information Technology Undergraduate</div>
+        <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:10px;font-size:12px;color:var(--muted);">
+          <span>📍 Chennai, India</span>
+          <span>📞 +91 6382412388</span>
+          <span>✉️ vipinvijayeec@gmail.com</span>
+          <span>🐙 github.com/vipinvijay123</span>
+          <span>💼 linkedin.com/in/vipin-vijay-15630033b</span>
+        </div>
+      </div>
+
+      <div class="resume-sec">
+        <div class="resume-sec-title">PROFILE STATEMENT</div>
+        <p class="body" style="color:#b4bfb7;">
+          Information Technology undergraduate with strong foundations in Java, Python, C, Data Structures and Algorithms, Object-Oriented Programming, and web development. Bring hands-on experience in civic technology, telecom infrastructure, telemedicine, and job automation, along with a software development internship and student leadership experience.
+        </p>
+      </div>
+
+      <div class="resume-sec">
+        <div class="resume-sec-title">WORK EXPERIENCE</div>
+
+        <div style="margin-bottom:1.25rem;">
+          <div class="resume-row">
+            <b>Software Development Intern — Chennai Metro Rail Limited (CMRL)</b>
+            <span>SEP 2026 – PRESENT</span>
+          </div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:6px;">Chennai, India</div>
+          <ul class="resume-ul">
+            <li>Contributed to the development and enhancement of the AI chatbot for the CMRL mobile application, supporting AI-powered passenger assistance and information access while improving 60% of chatbot interactions.</li>
+            <li>Supported chatbot development and integration activities within the CMRL application environment, contributing to chatbot enhancements and reducing response or processing time by 40%.</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="resume-row">
+            <b>Green Intern — 1M1B / AICTE / Salesforce Green Internship (Batch 7)</b>
+            <span>FEB 2026 – PRESENT</span>
+          </div>
+          <ul class="resume-ul">
+            <li>Contributed to a City/Town Waste Mapping and Awareness Platform, advancing waste-management awareness, sustainability, and community engagement while achieving 90% growth in participation.</li>
+            <li>Supported documentation, task tracking, progress reporting, and awareness activities as part of a virtual cross-functional team, contributing to 80% faster reporting.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="resume-sec">
+        <div class="resume-sec-title">EDUCATION</div>
+        <div class="resume-row">
+          <b>SRM Easwari Engineering College — B.Tech Information Technology</b>
+          <span>2024 – 2028</span>
+        </div>
+        <div style="font-size:12px;color:var(--vermilion);margin-top:2px;">Cumulative GPA: 7.82 / 10.0</div>
+      </div>
+
+      <div class="resume-sec">
+        <div class="resume-sec-title">TECHNICAL SKILLS</div>
+        <div class="body" style="font-size:13px;line-height:1.7;">
+          <p><strong style="color:var(--bone);">Hard Skills:</strong> Java, Python, C, Data Structures &amp; Algorithms, Object-Oriented Programming, HTML, CSS, React.js, Next.js, TypeScript, Tailwind CSS, Node.js, Express.js, Spring Boot, MongoDB, Mongoose, MySQL, PostgreSQL, Git, GitHub, VS Code, Figma, Tableau, Google Maps, Gemini / Google GenAI, JWT, Software testing, Availability, reliability, efficiency, observability, and performance optimization.</p>
+          <p style="margin-top:6px;"><strong style="color:var(--bone);">Soft Skills:</strong> Problem Solving, Time management, Adaptability and continuous learning, Receiving and applying feedback.</p>
+        </div>
+      </div>
+
+      <div class="resume-sec">
+        <div class="resume-sec-title">PROJECTS &amp; LEADERSHIP</div>
+        <ul class="resume-ul">
+          <li><strong>CivicAI (Tamil Nadu Civic Reporting):</strong> Next.js, TypeScript, Tailwind, Gemini AI, Google Maps, STT/TTS.</li>
+          <li><strong>Telecom Tower Asset Operations:</strong> React, TypeScript, Node.js, Express, MongoDB, JWT RBAC security.</li>
+          <li><strong>Telemedicine Application:</strong> Led 5-member team in Smart India Hackathon Top 50 round for rural access in Nabha.</li>
+          <li><strong>Job Automation Engine:</strong> Python, Gmail API / OAuth 2.0 automated outreach and recruiter parsing.</li>
+          <li><strong>E-Commerce Simulator:</strong> Java OOP console architecture (Unstop Tutedude Hackathon).</li>
+          <li><strong>Leadership:</strong> Head – Industry Institute Interactions (ITSA); Google Student Ambassador Finalist; Tata Imagination Challenge 2026 Shortlisted.</li>
+          <li><strong>Certifications:</strong> Cisco Networking Academy (Apply AI: Analyze Customer Reviews); 5x MongoDB University Certifications; Java Programming Mastery.</li>
+        </ul>
+      </div>
+
+      <div style="display:flex;gap:12px;margin-top:2rem;border-top:1px solid var(--line-soft);padding-top:1.25rem;">
+        <button type="button" class="cta" onclick="window.print()" style="margin-top:0;padding:12px 24px;">
+          <span>PRINT / SAVE AS PDF</span>
+          <i></i>
+        </button>
+        <button type="button" class="cta close-modal" style="margin-top:0;padding:12px 24px;border-color:var(--line-soft);">
+          <span>CLOSE DOSSIER</span>
+          <i></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL: PROJECT CASE STUDY INSPECTOR
+       ========================================================================= -->
+  <div class="dossier-modal" id="project-dossier" role="dialog" aria-modal="true">
+    <div class="modal-scrim"></div>
+    <div class="modal-paper">
+      <button type="button" class="modal-close close-modal" aria-label="Close modal">✕</button>
+      <div id="proj-cat" class="eyebrow" style="color:var(--vermilion);margin-bottom:8px;"></div>
+      <h3 id="proj-title" class="display" style="font-size:1.8rem;margin-bottom:1rem;"></h3>
+      <p id="proj-body" class="body-lg" style="margin-bottom:1.5rem;"></p>
+      <div id="proj-tags" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:2rem;"></div>
+      <button type="button" class="cta close-modal" style="margin-top:0;padding:12px 24px;">
+        <span>RETURN TO PATHWAYS</span>
+        <i></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/audio.js"></script>
+  <script src="js/canvas-scroller.js"></script>
+  <script src="js/preloader.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
